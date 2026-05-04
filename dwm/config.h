@@ -60,6 +60,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", "-e", "fish", NULL };
+static const char *clipcmd[] = { "/home/zup/.local/bin/screenshot", NULL };
 
 #include "shiftview.c"
 static const Key keys[] = {
@@ -93,6 +94,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
     { MODKEY,                       XK_w,      shiftview,      {.i = +1 } },
     { MODKEY,                       XK_q,      shiftview,      {.i = -1 } },
+	{ 0,                            XK_Print,  spawn,          {.v = clipcmd } },
 
 	/* Tag keys */
 	TAGKEYS(                        XK_1,                      0)
