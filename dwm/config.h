@@ -63,6 +63,8 @@ static const char *termcmd[]  = { "st", "-e", "fish", NULL };
 static const char *clipcmd[] = { "/home/zup/.local/bin/screenshot", NULL };
 static const char *brupcmd[]  = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
+static const char *redshift_warm[] = { "redshift_step", "down", NULL }; /* Win + F1: Increase warmth */
+static const char *redshift_cool[] = { "redshift_step", "up", NULL };   /* Win + F2: Decrease warmth */
 
 #include "shiftview.c"
 static const Key keys[] = {
@@ -97,8 +99,10 @@ static const Key keys[] = {
     { MODKEY,                       XK_w,      shiftview,      {.i = +1 } },
     { MODKEY,                       XK_q,      shiftview,      {.i = -1 } },
 	{ 0,                            XK_Print,  spawn,          {.v = clipcmd } },
-	{ MODKEY,             XK_F9,     spawn,          {.v = brdowncmd } },
-	{ MODKEY,             XK_F10,    spawn,          {.v = brupcmd } },
+	{ MODKEY,             			XK_F9,     spawn,          {.v = brdowncmd } },
+	{ MODKEY,             			XK_F10,    spawn,          {.v = brupcmd } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = redshift_warm } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = redshift_cool } },
 
 	/* Tag keys */
 	TAGKEYS(                        XK_1,                      0)
